@@ -1,0 +1,15 @@
+version: '2'
+services:
+    tarifcalculator-app:
+        image: tarifcalculator
+        environment:
+            - _JAVA_OPTIONS=-Xmx512m -Xms256m
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATASOURCE_URL=jdbc:postgresql://tarifcalculator-postgresql:5432/TarifCalculator
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+        ports:
+            - 8080:8080
+    tarifcalculator-postgresql:
+        extends:
+            file: postgresql.yml
+            service: tarifcalculator-postgresql
