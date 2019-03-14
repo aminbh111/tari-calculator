@@ -1,0 +1,51 @@
+entity TarifMask {
+	id Long,
+    validFrom LocalDate,
+    validTo LocalDate,
+}
+enum WeekDay {
+Sunday, Monday, Thursday,
+Tuesday, Wednesday, Friday,
+Saturday
+}
+entity WeekProfile{
+	id Long
+}
+entity DayProfile{
+	id Long,
+	weekday WeekDay,
+    fromTime ZonedDateTime,
+    toTime ZonedDateTime
+}
+entity Step {
+	id Long,
+    order Long,
+    duration Long,
+    tarif Float,
+    currency String,
+    stepRepeater Long,
+    once Boolean
+}
+entity MaxTarif {
+	id Long,
+ 	duration Long,
+    tarif Float,
+    currency String,
+}
+
+
+relationship OneToMany {
+	DayProfile{weekProfile} to WeekProfile,
+}
+relationship OneToOne {
+	WeekProfile{tarifMask} to TarifMask,
+}
+relationship OneToMany {
+	Step{tarifMask} to TarifMask,
+}
+relationship OneToMany {
+	MaxTarif{tarifMask} to TarifMask,
+}
+
+
+
