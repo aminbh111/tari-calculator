@@ -1,0 +1,35 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="dayProfile">
+            <h2><span>Day Profile</span> {{dayProfile.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Weekday</span></dt>
+                <dd>
+                    <span>{{dayProfile.weekday}}</span>
+                </dd>
+                <dt><span>From Time</span></dt>
+                <dd>
+                    <span>{{dayProfile.fromTime}}</span>
+                </dd>
+                <dt><span>To Time</span></dt>
+                <dd>
+                    <span>{{dayProfile.toTime}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/day-profile', dayProfile.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+{
+    "name": "Step",
+    "fields": [
+        {
+            "fieldName": "order",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "duration",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "tarif",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "currency",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "stepRepeater",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "once",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "tarifMask",
+            "otherEntityRelationshipName": "step",
+            "relationshipName": "tarifMask"
+        }
+    ],
+    "changelogDate": "20190314120142",
+    "entityTableName": "step",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

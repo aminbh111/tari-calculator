@@ -1,0 +1,36 @@
+{
+    "name": "TarifMask",
+    "fields": [
+        {
+            "fieldName": "validFrom",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "validTo",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "step",
+            "otherEntityName": "step",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "maxTarif",
+            "otherEntityName": "maxTarif",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190314120139",
+    "entityTableName": "tarif_mask",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,58 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-tarif-mask-heading">Create or edit a Tarif Mask</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!tarifMask.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="tarifMask.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_validFrom">Valid From</label>
+                    <div class="input-group">
+                        <input id="field_validFrom" type="text" class="form-control" name="validFrom" ngbDatepicker  #validFromDp="ngbDatepicker" [(ngModel)]="tarifMask.validFrom"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="validFromDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_validTo">Valid To</label>
+                    <div class="input-group">
+                        <input id="field_validTo" type="text" class="form-control" name="validTo" ngbDatepicker  #validToDp="ngbDatepicker" [(ngModel)]="tarifMask.validTo"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="validToDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_step">Step</label>
+                    <select class="form-control" id="field_step" name="step" [(ngModel)]="tarifMask.step" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="stepOption.id === tarifMask.step?.id ? tarifMask.step : stepOption" *ngFor="let stepOption of steps; trackBy: trackStepById">{{stepOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_maxTarif">Max Tarif</label>
+                    <select class="form-control" id="field_maxTarif" name="maxTarif" [(ngModel)]="tarifMask.maxTarif" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="maxTarifOption.id === tarifMask.maxTarif?.id ? tarifMask.maxTarif : maxTarifOption" *ngFor="let maxTarifOption of maxtarifs; trackBy: trackMaxTarifById">{{maxTarifOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

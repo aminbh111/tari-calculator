@@ -1,0 +1,35 @@
+{
+    "name": "DayProfile",
+    "fields": [
+        {
+            "fieldName": "weekday",
+            "fieldType": "WeekDay",
+            "fieldValues": "Sunday,Monday,Thursday,Tuesday,Wednesday,Friday,Saturday"
+        },
+        {
+            "fieldName": "fromTime",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "toTime",
+            "fieldType": "ZonedDateTime"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "weekProfile",
+            "otherEntityRelationshipName": "dayProfile",
+            "relationshipName": "weekProfile"
+        }
+    ],
+    "changelogDate": "20190314120141",
+    "entityTableName": "day_profile",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

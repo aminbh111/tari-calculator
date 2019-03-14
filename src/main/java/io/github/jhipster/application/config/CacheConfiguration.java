@@ -38,6 +38,14 @@ public class CacheConfiguration {
             cm.createCache(io.github.jhipster.application.domain.User.class.getName(), jcacheConfiguration);
             cm.createCache(io.github.jhipster.application.domain.Authority.class.getName(), jcacheConfiguration);
             cm.createCache(io.github.jhipster.application.domain.User.class.getName() + ".authorities", jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.TarifMask.class.getName(), jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.WeekProfile.class.getName(), jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.DayProfile.class.getName(), jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.DayProfile.class.getName() + ".weekProfiles", jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.Step.class.getName(), jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.Step.class.getName() + ".tarifMasks", jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.MaxTarif.class.getName(), jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.MaxTarif.class.getName() + ".tarifMasks", jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

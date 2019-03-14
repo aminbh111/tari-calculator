@@ -1,0 +1,43 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="tarifMask">
+            <h2><span>Tarif Mask</span> {{tarifMask.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Valid From</span></dt>
+                <dd>
+                    <span>{{tarifMask.validFrom}}</span>
+                </dd>
+                <dt><span>Valid To</span></dt>
+                <dd>
+                    <span>{{tarifMask.validTo}}</span>
+                </dd>
+                <dt><span>Step</span></dt>
+                <dd>
+                    <div *ngIf="tarifMask.step">
+                        <a [routerLink]="['/step', tarifMask.step?.id, 'view']">{{tarifMask.step?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>Max Tarif</span></dt>
+                <dd>
+                    <div *ngIf="tarifMask.maxTarif">
+                        <a [routerLink]="['/max-tarif', tarifMask.maxTarif?.id, 'view']">{{tarifMask.maxTarif?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/tarif-mask', tarifMask.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

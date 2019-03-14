@@ -1,0 +1,29 @@
+{
+    "name": "WeekProfile",
+    "fields": [],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "tarifMask",
+            "otherEntityRelationshipName": "weekProfile",
+            "relationshipName": "tarifMask",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipName": "dayProfile",
+            "otherEntityName": "dayProfile",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190314120140",
+    "entityTableName": "week_profile",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,64 @@
+<div>
+    <h2 id="page-heading">
+        <span>Week Profiles</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-week-profile" [routerLink]="['/week-profile/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Week Profile
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="weekProfiles">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Tarif Mask</span></th>
+            <th><span>Day Profile</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let weekProfile of weekProfiles ;trackBy: trackId">
+                <td><a [routerLink]="['/week-profile', weekProfile.id, 'view' ]">{{weekProfile.id}}</a></td>
+                <td>
+                    <div *ngIf="weekProfile.tarifMask">
+                        <a [routerLink]="['../tarif-mask', weekProfile.tarifMask?.id, 'view' ]" >{{weekProfile.tarifMask?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="weekProfile.dayProfile">
+                        <a [routerLink]="['../day-profile', weekProfile.dayProfile?.id, 'view' ]" >{{weekProfile.dayProfile?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/week-profile', weekProfile.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/week-profile', weekProfile.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'week-profile', { outlets: { popup: weekProfile.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

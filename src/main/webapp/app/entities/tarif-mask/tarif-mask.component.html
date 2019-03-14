@@ -1,0 +1,68 @@
+<div>
+    <h2 id="page-heading">
+        <span>Tarif Masks</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-tarif-mask" [routerLink]="['/tarif-mask/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Tarif Mask
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="tarifMasks">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Valid From</span></th>
+            <th><span>Valid To</span></th>
+            <th><span>Step</span></th>
+            <th><span>Max Tarif</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let tarifMask of tarifMasks ;trackBy: trackId">
+                <td><a [routerLink]="['/tarif-mask', tarifMask.id, 'view' ]">{{tarifMask.id}}</a></td>
+                <td>{{tarifMask.validFrom | date:'mediumDate'}}</td>
+                <td>{{tarifMask.validTo | date:'mediumDate'}}</td>
+                <td>
+                    <div *ngIf="tarifMask.step">
+                        <a [routerLink]="['../step', tarifMask.step?.id, 'view' ]" >{{tarifMask.step?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="tarifMask.maxTarif">
+                        <a [routerLink]="['../max-tarif', tarifMask.maxTarif?.id, 'view' ]" >{{tarifMask.maxTarif?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/tarif-mask', tarifMask.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/tarif-mask', tarifMask.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'tarif-mask', { outlets: { popup: tarifMask.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

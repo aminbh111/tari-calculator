@@ -1,0 +1,35 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="weekProfile">
+            <h2><span>Week Profile</span> {{weekProfile.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Tarif Mask</span></dt>
+                <dd>
+                    <div *ngIf="weekProfile.tarifMask">
+                        <a [routerLink]="['/tarif-mask', weekProfile.tarifMask?.id, 'view']">{{weekProfile.tarifMask?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>Day Profile</span></dt>
+                <dd>
+                    <div *ngIf="weekProfile.dayProfile">
+                        <a [routerLink]="['/day-profile', weekProfile.dayProfile?.id, 'view']">{{weekProfile.dayProfile?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/week-profile', weekProfile.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

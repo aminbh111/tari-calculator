@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity TarifMask.
+    -->
+    <changeSet id="20190314120139-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="step_id"
+                                 baseTableName="tarif_mask"
+                                 constraintName="fk_tarif_mask_step_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="step"/>
+
+        <addForeignKeyConstraint baseColumnNames="max_tarif_id"
+                                 baseTableName="tarif_mask"
+                                 constraintName="fk_tarif_mask_max_tarif_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="max_tarif"/>
+
+    </changeSet>
+</databaseChangeLog>
